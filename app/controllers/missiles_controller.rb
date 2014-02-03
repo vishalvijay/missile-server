@@ -4,7 +4,7 @@ class MissilesController < ApplicationController
   # GET /missiles
   # GET /missiles.json
   def index
-    @missiles = Missile.all
+    @missiles = Missile.order("created_at desc").page params[:page]
   end
 
   # GET /missiles/1
