@@ -1,0 +1,29 @@
+<h1>Listing missiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Message</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @missiles.each do |missile| %>
+      <tr>
+        <td><%= missile.title %></td>
+        <td><%= missile.message %></td>
+        <td><%= link_to 'Show', missile %></td>
+        <td><%= link_to 'Edit', edit_missile_path(missile) %></td>
+        <td><%= link_to 'Destroy', missile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Missile', new_missile_path %>
