@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
-Missile::Application.initialize!
+MissileServer::Application.initialize!
