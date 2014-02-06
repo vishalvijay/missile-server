@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203170022) do
+ActiveRecord::Schema.define(version: 20140206154415) do
 
   create_table "missiles", force: true do |t|
     t.string   "title"
@@ -19,5 +19,18 @@ ActiveRecord::Schema.define(version: 20140203170022) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "missiles_tags", id: false, force: true do |t|
+    t.integer "missile_id"
+    t.integer "tag_id"
+  end
+
+  add_index "missiles_tags", ["missile_id", "tag_id"], name: "index_missiles_tags_on_missile_id_and_tag_id"
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
 end
