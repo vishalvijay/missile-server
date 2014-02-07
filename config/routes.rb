@@ -1,4 +1,6 @@
 MissileServer::Application.routes.draw do
+  resources :comments
+
   resources :missiles
   root 'missiles#index'
 

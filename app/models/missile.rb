@@ -2,6 +2,7 @@ class Missile < ActiveRecord::Base
   validates :message, presence: true
   has_and_belongs_to_many :tags
   after_create :prepare_tags
+  has_many :comments
 
   private
 
