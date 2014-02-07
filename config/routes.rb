@@ -2,6 +2,7 @@ MissileServer::Application.routes.draw do
   resources :comments
 
   resources :missiles
+  resources :tags, only: [:index, :show]
   root 'missiles#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
