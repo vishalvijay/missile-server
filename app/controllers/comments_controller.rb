@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if params[:missile_id].present?
       missile = Missile.find_by_id(params[:missile_id])
       if missile
-        @comments = missile.comments.order("created_at desc").page params[:page]
+        @comments = missile.comments
       else
         @comments = nil
       end
