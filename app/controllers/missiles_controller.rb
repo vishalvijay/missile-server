@@ -17,6 +17,11 @@ class MissilesController < ApplicationController
     render 'show'
   end
 
+  def search
+    @missiles = Missile.search(params[:key])
+    render 'index'
+  end
+
   def missiles_by_id
     respond_to do |format|
       if params[:ids].present?

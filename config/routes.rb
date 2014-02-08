@@ -6,6 +6,7 @@ MissileServer::Application.routes.draw do
       get :by_ids ,to: :missiles_by_id
       get :new_missiles
       get :hot_missile
+      get 'search/:key' ,to: :search
     end
   end
   resources :tags, only: [:index, :show]

@@ -4,6 +4,11 @@ class Missile < ActiveRecord::Base
   after_create :prepare_tags
   has_many :comments
 
+  def self.search(key)
+    return scoped unless key.present?
+    where(['title LIKE ? OR message LIKE ?', "%#{key}%", "%#{key}%"])
+  end
+
   private
 
   def prepare_tags
