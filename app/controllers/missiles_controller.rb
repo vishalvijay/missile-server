@@ -7,6 +7,32 @@ class MissilesController < ApplicationController
     @missiles = Missile.order("created_at desc").page params[:page]
   end
 
+  def missiles_by_id
+    respond_to do |format|
+      if params[:ids].present?
+        not_found = []
+        found = []
+        ids = params[:ids].split(",")
+        ids.each do |id|
+          missile = Missile.find_by_id(id)
+          if missile
+            found << missile
+          else
+            not_found << id.to_i
+          end
+        end
+        format.html {
+          @missiles = found
+          render action: 'index'
+        }
+        format.json { render json: {missiles: found, not_found: not_found}, status: :ok }
+      else
+        format.html { render action: 'index' }
+        format.json { render json: {errors: ["Required params missing."]}, status: :not_acceptable }
+      end
+    end
+  end
+
   # GET /missiles/1
   # GET /missiles/1.json
   def show
