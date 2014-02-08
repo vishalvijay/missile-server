@@ -12,6 +12,11 @@ class MissilesController < ApplicationController
     render 'index'
   end
 
+  def hot_missile
+    @missile = Missile.first(offset: rand(Missile.count))
+    render 'show'
+  end
+
   def missiles_by_id
     respond_to do |format|
       if params[:ids].present?
