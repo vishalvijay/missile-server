@@ -27,12 +27,15 @@ class MissilesController < ApplicationController
           end
         end
         format.html {
-          @missiles = found
+          @missiles = found #issue : undefined method `current_page' for #<Array:0x007f6a0c493900>
           render action: 'index'
         }
         format.json { render json: {missiles: found, not_found: not_found}, status: :ok }
       else
-        format.html { render action: 'index' }
+        format.html {
+          @missiles = [] #issue : undefined method `current_page' for []:Array
+          render action: 'index'
+        }
         format.json { render json: {errors: ["Required params missing."]}, status: :not_acceptable }
       end
     end
