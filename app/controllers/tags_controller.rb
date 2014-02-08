@@ -9,7 +9,7 @@ class TagsController < ApplicationController
 
   # GET /tags/1.json
   def show
-    respond_with @tag ? @tag.missiles : []
+    respond_with @tag ? @tag.missiles.page(params[:page]) : []
   end
 
   private
