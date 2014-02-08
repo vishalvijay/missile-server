@@ -7,6 +7,11 @@ class MissilesController < ApplicationController
     @missiles = Missile.order("created_at desc").page params[:page]
   end
 
+  def new_missiles
+    @missiles = Missile.where("id > ?", params[:id].present? ? params[:id] : 0).page params[:page]
+    render 'index'
+  end
+
   def missiles_by_id
     respond_to do |format|
       if params[:ids].present?
