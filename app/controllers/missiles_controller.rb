@@ -18,7 +18,7 @@ class MissilesController < ApplicationController
   end
 
   def search
-    @missiles = Missile.search(params[:key])
+    @missiles = Missile.search(params[:key]).page params[:page]
     render 'index'
   end
 
